@@ -13,7 +13,7 @@ class broswer(QMainWindow):
         
     def show(self):
         self.showMaximized()
-        path_icon= os.path.join("browser/src/","icon.jpeg")
+        path_icon= os.path.join("src/","icon.jpeg")
         try:
             icon=QIcon(path_icon)
             self.setWindowIcon(icon)
@@ -27,17 +27,17 @@ class broswer(QMainWindow):
         navbar= QToolBar()
         self.addToolBar(navbar)
         #back
-        path_back= os.path.join("browser/src/","previous.png")
+        path_back= os.path.join("src/","previous.png")
         back= QAction(QIcon(path_back),'back',self)
         back.triggered.connect(self.home.back)
         navbar.addAction(back)
         #forward
-        path_forward= os.path.join("browser/src/","next-button.png")
+        path_forward= os.path.join("src/","next-button.png")
         forward= QAction(QIcon(path_forward),'forward',self)
         forward.triggered.connect(self.home.forward)
         navbar.addAction(forward)
         #reload
-        path_reload= os.path.join("browser/src","power.png")
+        path_reload= os.path.join("src","power.png")
         reload= QAction(QIcon(path_reload),"reload",self)
         reload.triggered.connect(self.home.reload)
         navbar.addAction(reload)     
