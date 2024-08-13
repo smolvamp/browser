@@ -1,13 +1,11 @@
-import re
-from webbrowser import *
-from PyQt6.QtCore import * 
-from PyQt6.QtWidgets import *
-from PyQt6.QtWebEngineWidgets import *
-from PyQt6.QtWebEngineCore import *
-from PyQt6.QtGui import *
+
+from PyQt6.QtCore import * #type: ignore
+from PyQt6.QtWidgets import *#type: ignore
+from PyQt6.QtWebEngineWidgets import *#type: ignore
+from PyQt6.QtWebEngineCore import *#type: ignore
+from PyQt6.QtGui import *#type: ignore
 import sys
-
-
+import os
 class broswer(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -15,28 +13,32 @@ class broswer(QMainWindow):
         
     def show(self):
         self.showMaximized()
+        path_icon= os.path.join("browser/src/","icon.jpeg")
         try:
-            icon=QIcon('~/Music/icon.ico')
+            icon=QIcon(path_icon)
             self.setWindowIcon(icon)
         except Exception as e:
             print(e)
         self.home.setUrl(QUrl("https://google.com"))
         self.setCentralWidget(self.home)
         self.nav()
-        self.home.page().profile().downloadRequested.connect(self.download)
+        self.home.page().profile().downloadRequested.connect(self.download) #type: ignore
     def nav(self):
         navbar= QToolBar()
         self.addToolBar(navbar)
         #back
-        back= QAction(QIcon('previous.png'),'back',self)
+        path_back= os.path.join("browser/src/","previous.png")
+        back= QAction(QIcon(path_back),'back',self)
         back.triggered.connect(self.home.back)
         navbar.addAction(back)
         #forward
-        forward= QAction(QIcon('next-button.png'),'forward',self)
+        path_forward= os.path.join("browser/src/","next-button.png")
+        forward= QAction(QIcon(path_forward),'forward',self)
         forward.triggered.connect(self.home.forward)
         navbar.addAction(forward)
         #reload
-        reload= QAction(QIcon('power.png'),"reload",self)
+        path_reload= os.path.join("browser/src","power.png")
+        reload= QAction(QIcon(path_reload),"reload",self)
         reload.triggered.connect(self.home.reload)
         navbar.addAction(reload)     
         #search_bar   
